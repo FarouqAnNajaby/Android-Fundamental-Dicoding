@@ -22,7 +22,6 @@ class MainViewModel : ViewModel() {
     private val following = MutableLiveData<List<Users>>()
     private val followers = MutableLiveData<List<Users>>()
 
-    private val token = BuildConfig.GITHUB_TOKEN;
     private val request = ApiService.buildService(ApiInterface::class.java)
 
     fun getSearchUser(): LiveData<List<Users>> {
@@ -42,7 +41,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun searchUser(username: String) {
-        val call = request.searchUser(username, token)
+        val call = request.searchUser(username)
 
         call.enqueue(object : Callback<SearchResponse> {
             override fun onResponse(
@@ -63,7 +62,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun detailUser(username: String) {
-        val call = request.getDetail(username, token)
+        val call = request.getDetail(username)
 
         call.enqueue(object : Callback<UserDetail> {
             override fun onResponse(
@@ -85,7 +84,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun listFollowers(username: String) {
-        val call = request.getFollowers(username, token)
+        val call = request.getFollowers(username)
 
         call.enqueue(object : Callback<List<Users>> {
             override fun onResponse(
@@ -106,7 +105,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun listFollowing(username: String) {
-        val call = request.getFollowings(username, token)
+        val call = request.getFollowings(username)
 
         call.enqueue(object : Callback<List<Users>> {
             override fun onResponse(

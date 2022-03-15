@@ -12,24 +12,21 @@ import retrofit2.http.Query
 interface ApiInterface {
     @GET("search/users")
     fun searchUser(
-        @Query("q") username: String,
-        @Header("Authorization") token: String
+        @Query("q") username: String
     ): Call<SearchResponse>
 
     @GET("users/{username}")
     fun getDetail(
-        @Path("username") username: String, @Header("Authorization") token: String
+        @Path("username") username: String
     ): Call<UserDetail>
 
     @GET("users/{username}/followers")
     fun getFollowers(
-        @Path("username") username: String,
-        @Header("Authorization") token: String
+        @Path("username") username: String
     ): Call<List<Users>>
 
     @GET("  users/{username}/following")
     fun getFollowings(
-        @Path("username") username: String,
-        @Header("Authorization") token: String
+        @Path("username") username: String
     ): Call<List<Users>>
 }
