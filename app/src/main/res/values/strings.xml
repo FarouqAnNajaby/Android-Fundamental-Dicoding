@@ -108,4 +108,7 @@
     <string name="following">Mengikuti</string>
     <string name="followers">Pengikut</string>
     <string name="creator">By Farouq An Najaby</string>
+    <string name="name_menu_favorite">Favorite</string>
+    <string name="name_menu_settings">Pengaturan</string>
+    <string name="dark_mode">Mode Gelap</string>
 </resources>

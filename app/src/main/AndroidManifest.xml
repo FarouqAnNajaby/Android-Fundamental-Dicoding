@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".ui.setting.SettingActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.dashboard.detil.DetilActivity"
             android:exported="true"
             android:label="@string/title_activity_detil"

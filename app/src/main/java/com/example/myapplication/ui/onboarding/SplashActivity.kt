@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivitySplashBinding
+import com.example.myapplication.preferences.ThemePreferences
+import com.example.myapplication.preferences.ThemeViewModel
+import com.example.myapplication.preferences.ThemeViewModelFactory
 import com.example.myapplication.ui.dashboard.MainActivity
+import com.example.myapplication.ui.setting.dataStore
 import kotlinx.coroutines.*
 
 class SplashActivity : AppCompatActivity() {
@@ -30,6 +36,20 @@ class SplashActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
+        }
+
+        val pref = ThemePreferences.getInstance(dataStore)
+        val themeViewModel = ViewModelProvider(this, ThemeViewModelFactory(pref)).get(
+            ThemeViewModel::class.java
+        )
+
+        themeViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            setContentView(view)
         }
 
         activityScope.launch {

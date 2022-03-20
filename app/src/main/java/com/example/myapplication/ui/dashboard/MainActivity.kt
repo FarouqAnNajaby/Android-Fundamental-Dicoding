@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,8 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.helper.createSearchViewMenu
 import com.example.myapplication.ui.dashboard.adapter.UserListAdapter
 import com.example.myapplication.ui.dashboard.detil.DetilActivity
+import com.example.myapplication.ui.favorite.FavoriteUserActivity
+import com.example.myapplication.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity(), UserListAdapter.OnUserClickCallback {
 
@@ -110,5 +113,17 @@ class MainActivity : AppCompatActivity(), UserListAdapter.OnUserClickCallback {
             adapter = userAdapter
         }
         binding.welcomeText.visibility = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.setting) {
+            val mIntent = Intent(this@MainActivity, SettingActivity::class.java)
+            startActivity(mIntent)
+        }
+        if (item.itemId == R.id.favorite) {
+            val mIntent = Intent(this@MainActivity, FavoriteUserActivity::class.java)
+            startActivity(mIntent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

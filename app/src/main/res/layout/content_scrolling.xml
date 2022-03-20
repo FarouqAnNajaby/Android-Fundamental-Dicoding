@@ -17,8 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorColor="@color/purple_500"
-        app:tabTextAppearance="@style/TextView.Tab"
-        app:tabTextColor="@color/black" />
+        app:tabTextAppearance="@style/TextView.Tab" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_follow"
