@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.myapplication.repository.FavoriteUserRepository
 import com.example.myapplication.database.UserFavorite
 
-class FavoriteViewModel(application: Application) : ViewModel() {
+class FavoriteGetDataViewModel(application: Application) : ViewModel() {
 
     private val mFavoriteUserRepository: FavoriteUserRepository =
         FavoriteUserRepository(application)
