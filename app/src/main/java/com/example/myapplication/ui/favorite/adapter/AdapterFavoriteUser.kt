@@ -2,16 +2,18 @@ package com.example.myapplication.ui.favorite.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.database.UserFavorite
 import com.example.myapplication.databinding.ItemListUserBinding
+import com.example.myapplication.helper.FavDiffCallback
 
 class AdapterFavoriteUser
-    (private val listener: OnFavoriteClickCallback? = null):
-    RecyclerView.Adapter<AdapterFavoriteUser.ViewHolder>() {
+    (private val listener: OnFavoriteClickCallback? = null)
+    : RecyclerView.Adapter<AdapterFavoriteUser.ViewHolder>() {
 
     private val listFavorite = ArrayList<UserFavorite>()
 
@@ -48,5 +50,13 @@ class AdapterFavoriteUser
 
     interface OnFavoriteClickCallback {
         fun onFavoriteClicked(username: String?)
+    }
+
+    fun setListFavorite(listFavorite: List<UserFavorite>) {
+        val diffCallback = FavDiffCallback(this.listFavorite, listFavorite)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        this.listFavorite.clear()
+        this.listFavorite.addAll(listFavorite)
+        diffResult.dispatchUpdatesTo(this)
     }
 }

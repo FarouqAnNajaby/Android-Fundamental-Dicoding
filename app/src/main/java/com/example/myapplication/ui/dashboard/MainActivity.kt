@@ -16,7 +16,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.helper.createSearchViewMenu
 import com.example.myapplication.ui.dashboard.adapter.UserListAdapter
 import com.example.myapplication.ui.dashboard.detil.DetilActivity
-import com.example.myapplication.ui.favorite.FavoriteUserActivity
+import com.example.myapplication.ui.favorite.FavoriteActiviy
 import com.example.myapplication.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity(), UserListAdapter.OnUserClickCallback {
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity(), UserListAdapter.OnUserClickCallback {
             startActivity(mIntent)
         }
         if (item.itemId == R.id.favorite) {
-            val mIntent = Intent(this@MainActivity, FavoriteUserActivity::class.java)
+            val mIntent = Intent(this@MainActivity, FavoriteActiviy::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)
